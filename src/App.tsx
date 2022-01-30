@@ -1,13 +1,10 @@
-import Products from './Product/List';
-import NewProduct from './Product/Form'
+import ProductContainer from './Product/Container';
 
-import { data } from './data/seed'
 
 function App() {
   return (
     <>
-      <NewProduct />
-      <Products src={data.products} />
+      <ProductContainer />
     </>
   );
 }

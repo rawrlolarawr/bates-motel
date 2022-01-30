@@ -2,13 +2,13 @@ import React from "react";
 import Product, { IProduct } from "./"
 
 export interface IProducts {
-    src: IProduct[]
+    src?: IProduct[]
 }
 
-const ProductList = ({ src }: IProducts) => {
+const ProductList = ({ src }: IProducts ) => {
     return (
         <>
-            {src.map(prod => <Product title={prod.title} description={prod.description} price={prod.price} /> )}
+            {src && src.map(prod => <Product key={prod.key} product={prod} /> )}
         </>
     )
 }

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useAppDispatch } from '../hooks/product'
+import { addProduct } from "../reducers/product";
 
-interface IForm {
+export interface IForm {
     title: HTMLInputElement,
     description: HTMLInputElement,
     price: HTMLInputElement
@@ -10,9 +12,10 @@ const ProductForm = () => {
     const [title, setTitle] = useState('New Item')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('$999')
+    
+    const dispatch = useAppDispatch()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target)
         switch(e.target.name) {
             case('title'):
                 setTitle(e.target.value)
@@ -30,7 +33,12 @@ const ProductForm = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        alert(`${title} - ${description} - ${price}`)
+        dispatch(addProduct({
+            key: 'temp-key',
+            title,
+            description,
+            price
+        }))
     }
 
     return (

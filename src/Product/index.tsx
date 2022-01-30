@@ -2,18 +2,23 @@ import React from "react";
 
 // Interface
 export interface IProduct {
+    key: string,
     title: string,
     description: string,
     price: string
 }
 
-const Product = ({ title, description, price }: IProduct) => {
+interface IProdObj {
+    product: IProduct
+}
+
+const Product = ({ product }: IProdObj) => {
 
     return (
         <>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <p><em>{price}</em></p>
+            <h3>{product.title}</h3>
+            <p>{product.description}</p>
+            <p><em>{product.price}</em></p>
         </>
     )
 }
